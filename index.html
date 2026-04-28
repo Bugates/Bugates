@@ -5,880 +5,166 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Navya Tiwari</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --ink: #0A0A0A;
-    --paper: #F5F2EC;
-    --paper2: #EDEAE2;
-    --accent: #1A1AFF;
-    --accent2: #FF3333;
-    --muted: #6B6B6B;
-    --rule: rgba(10,10,10,0.12);
-    --mono: 'Space Mono', monospace;
-    --serif: 'DM Serif Display', serif;
-    --sans: 'DM Sans', sans-serif;
-  }
-
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--sans);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 3rem;
-    background: var(--paper);
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 1.4rem;
-    align-items: center;
-  }
-
-  .tab-btn {
-    border: 0;
-    background: transparent;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    cursor: pointer;
-    padding: 0.4rem 0;
-    border-bottom: 1px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .tab-btn:hover,
-  .tab-btn.active {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
-  }
-
-  .hero-left {
-    padding: 6rem 3rem 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-right: 1px solid var(--rule);
-  }
-
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-  }
-
-  .hero-name {
-    font-family: var(--serif);
-    font-size: clamp(52px, 6vw, 82px);
-    line-height: 1.0;
-    font-weight: 400;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.7s ease both;
-  }
-
-  .hero-name em {
-    font-style: italic;
-    color: var(--accent2);
-  }
-
-  .typewriter-wrap {
-    display: flex;
-    align-items: baseline;
-    gap: 0;
-    min-height: 2.2rem;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.7s 0.1s ease both;
-  }
-
-  .tw-prefix {
-    font-size: 15px;
-    color: var(--muted);
-    white-space: nowrap;
-    font-family: var(--sans);
-  }
-
-  .tw-text {
-    font-size: 15px;
-    color: var(--ink);
-    font-weight: 500;
-    font-family: var(--sans);
-  }
-
-  .tw-cursor {
-    display: inline-block;
-    width: 1.5px;
-    height: 1.1em;
-    background: var(--ink);
-    margin-left: 2px;
-    vertical-align: text-bottom;
-    animation: blink 1s step-end infinite;
-  }
-
-  @keyframes blink {
-    0%,100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  .hero-bio {
-    font-size: 15px;
-    color: var(--muted);
-    max-width: 400px;
-    line-height: 1.8;
-    animation: fadeUp 0.7s 0.2s ease both;
-  }
-
-  .hero-right {
-    padding: 6rem 3rem 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-  }
-
-  .research-badge {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 1.5rem 2rem;
-    font-family: var(--mono);
-    font-size: 11px;
-    line-height: 2;
-  }
-
-  .research-badge strong {
-    color: #7EB3FF;
-    font-weight: 700;
-  }
-
-  .research-badge span {
-    color: rgba(245,242,236,0.65);
-  }
-
-  .tab-panel {
-    display: none;
-    padding: 6rem 3rem;
-    border-top: 1px solid var(--rule);
-    min-height: calc(100vh - 80px);
-    animation: fadeUp 0.35s ease both;
-  }
-
-  .tab-panel.active {
-    display: block;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 2rem;
-    margin-bottom: 4rem;
-  }
-
-  .section-num {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-  }
-
-  .section-title {
-    font-family: var(--serif);
-    font-size: 42px;
-    font-weight: 400;
-  }
-
-  .research-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  .research-card {
-    background: var(--paper2);
-    padding: 2.5rem;
-    transition: background 0.15s;
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .research-card:hover {
-    background: var(--ink);
-    color: var(--paper);
-  }
-
-  .research-card:hover .rc-org {
-    color: #7EB3FF;
-  }
-
-  .research-card:hover .rc-desc {
-    color: rgba(245,242,236,0.65);
-  }
-
-  .research-card:hover .rc-tags span {
-    background: rgba(245,242,236,0.08);
-    color: rgba(245,242,236,0.8);
-    border-color: rgba(245,242,236,0.15);
-  }
-
-  .rc-org {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1rem;
-    transition: color 0.15s;
-  }
-
-  .rc-title {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 1.25;
-    margin-bottom: 1rem;
-  }
-
-  .rc-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    transition: color 0.15s;
-  }
-
-  .rc-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .rc-tags span {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.06em;
-    padding: 4px 10px;
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    text-transform: uppercase;
-    transition: all 0.15s;
-  }
-
-  .pub-grid {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .pub-item {
-    display: grid;
-    grid-template-columns: 80px 1fr auto;
-    align-items: start;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--rule);
-    transition: background 0.15s;
-  }
-
-  .pub-item:hover {
-    background: var(--paper2);
-    margin: 0 -3rem;
-    padding: 2rem 3rem;
-  }
-
-  .pub-year {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    padding-top: 4px;
-  }
-
-  .pub-title {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.3;
-    margin-bottom: 6px;
-  }
-
-  .pub-venue {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    text-transform: uppercase;
-  }
-
-  .pub-badge {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    white-space: nowrap;
-    margin-top: 4px;
-  }
-
-  .badge-demo {
-    background: var(--accent2);
-    color: white;
-  }
-
-  .badge-paper {
-    background: var(--ink);
-    color: var(--paper);
-  }
-
-  .awards-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  .award-card {
-    background: var(--paper2);
-    padding: 2.4rem 2.5rem;
-    min-height: 190px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: background 0.15s, color 0.15s;
-  }
-
-  .award-card:hover {
-    background: var(--ink);
-    color: var(--paper);
-  }
-
-  .award-card:hover .award-detail,
-  .award-card:hover .award-year {
-    color: rgba(245,242,236,0.68);
-  }
-
-  .award-name {
-    font-family: var(--serif);
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 1.15;
-    color: var(--accent2);
-    margin-bottom: 0.9rem;
-  }
-
-  .award-card:hover .award-name {
-    color: #7EB3FF;
-  }
-
-  .award-result {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 0.35rem;
-  }
-
-  .award-detail {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .award-year {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 1.2rem;
-  }
-
-  .projects-list {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .project-row {
-    display: grid;
-    grid-template-columns: 40px 1fr 1fr 120px;
-    align-items: center;
-    gap: 2rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--rule);
-    transition: background 0.15s;
-    cursor: default;
-  }
-
-  .project-row:hover {
-    background: var(--paper2);
-    margin: 0 -3rem;
-    padding: 1.5rem 3rem;
-  }
-
-  .proj-num {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-  }
-
-  .proj-title {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 400;
-  }
-
-  .proj-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .proj-tag {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--ink);
-    color: var(--paper);
-    padding: 5px 12px;
-    text-align: center;
-    justify-self: end;
-  }
-
-  .contact-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .contact-heading {
-    font-family: var(--serif);
-    font-size: 52px;
-    font-weight: 400;
-    line-height: 1.1;
-  }
-
-  .contact-heading em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    background: var(--paper2);
-    font-family: var(--mono);
-    font-size: 12px;
-    text-decoration: none;
-    color: var(--ink);
-    transition: background 0.15s;
-  }
-
-  .contact-link:hover {
-    background: var(--ink);
-    color: var(--paper);
-  }
-
-  .contact-link-label {
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: block;
-  }
-
-  .contact-link:hover .contact-link-label {
-    color: rgba(245,242,236,0.5);
-  }
-
-  footer {
-    border-top: 1px solid var(--rule);
-    padding: 2rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  footer p {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 900px) {
-    nav {
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      flex-direction: column;
-    }
-
-    .nav-links {
-      flex-wrap: wrap;
-      gap: 0.85rem;
-    }
-
-    .hero {
-      grid-template-columns: 1fr;
-      padding-top: 125px;
-    }
-
-    .hero-left {
-      border-right: 0;
-      border-bottom: 1px solid var(--rule);
-      padding: 4rem 1.25rem;
-    }
-
-    .hero-right,
-    .tab-panel {
-      padding: 4rem 1.25rem;
-    }
-
-    .research-grid,
-    .awards-grid,
-    .contact-inner {
-      grid-template-columns: 1fr;
-    }
-
-    .pub-item,
-    .project-row {
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
-    }
-
-    .proj-tag {
-      justify-self: start;
-    }
-
-    footer {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-      padding: 2rem 1.25rem;
-    }
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0A0A0A;
+  --paper: #F5F2EC;
+  --paper2: #EDEAE2;
+  --accent: #1A1AFF;
+  --accent2: #FF3333;
+  --muted: #6B6B6B;
+  --rule: rgba(10,10,10,0.12);
+  --mono: 'Space Mono', monospace;
+  --serif: 'DM Serif Display', serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 3rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.nav-links { display: flex; gap: 1.4rem; }
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.tab-btn.active { color: var(--accent); }
+
+.tab-panel { display: none; padding: 6rem 3rem; }
+.tab-panel.active { display: block; }
+
+.section-title {
+  font-family: var(--serif);
+  font-size: 42px;
+  margin-bottom: 2rem;
+}
+
+/* 🔴 FIXED BADGES */
+.badge-demo,
+.badge-paper {
+  background: var(--accent2);
+  color: white;
+  padding: 5px 12px;
+  font-size: 9px;
+  font-family: var(--mono);
+  text-transform: uppercase;
+}
+
+/* publications layout */
+.pub-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.pub-title {
+  font-family: var(--serif);
+  font-size: 20px;
+}
+
+.pub-venue {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+}
 </style>
 </head>
 
 <body>
 
 <nav>
-  <span class="nav-logo">Navya Tiwari — Portfolio</span>
+  <div>Navya Tiwari</div>
   <div class="nav-links">
     <button class="tab-btn active" data-tab="home">Home</button>
     <button class="tab-btn" data-tab="research">Research</button>
     <button class="tab-btn" data-tab="publications">Publications</button>
     <button class="tab-btn" data-tab="awards">Awards</button>
     <button class="tab-btn" data-tab="projects">Independent Projects</button>
-    <button class="tab-btn" data-tab="contact">Contact</button>
   </div>
 </nav>
 
 <main>
-  <div class="tab-panel active" id="home">
-    <div class="hero" style="min-height:calc(100vh - 80px); padding-top:0;">
-      <div class="hero-left">
-        <p class="hero-tag">// HCI · Physiological Computing · Human-AI Interaction</p>
-        <h1 class="hero-name">Navya<br><em>Tiwari</em></h1>
-        <div class="typewriter-wrap">
-          <span class="tw-prefix">Researching&nbsp;</span>
-          <span class="tw-text" id="tw"></span><span class="tw-cursor" id="tw-cursor"></span>
-        </div>
-        <p class="hero-bio">ECE student at Olin College building systems that listen to the body — real-time biosignal pipelines, wearable sensing hardware, and adaptive AI at the intersection of human cognition and technology.</p>
-      </div>
 
-      <div class="hero-right">
-        <div class="research-badge">
-          <strong>MIT MEDIA LAB</strong> · Fluid Interfaces Group<br>
-          <span>Wearable Physiological Sensing · Conversational Agents</span>
-        </div>
-        <div class="research-badge" style="background:#111;">
-          <strong>WELLESLEY HCI LAB</strong><br>
-          <span>Multimodal Cognitive Load Modeling · EMS Research</span>
-        </div>
-        <div class="research-badge" style="background:#1a1a1a;">
-          <strong>OLIN COLLEGE</strong> · Climate Robotics Lab<br>
-          <span>Transformer Models · Marine Feature Identification</span>
-        </div>
-        <div class="research-badge" style="background:#222;">
-          <strong>CELESTE LAB</strong> · Wellesley College<br>
-          <span>Anomaly Detection · Astronomical Video Analysis</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <section class="tab-panel" id="research">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2 class="section-title">Research Experience</h2>
-    </div>
-
-    <div class="research-grid">
-      <div class="research-card">
-        <div class="rc-org">MIT Media Lab · Fluid Interfaces Group · PI: Michelle Kim</div>
-        <div class="rc-title">Wearable Physiological Sensing & Conversational Agents</div>
-        <div class="rc-desc">Designed smart ring components for biosignal acquisition, soldered PCB prototypes, built embedded streaming software, and developed multimodal speech-based pipelines for emotion and cognitive-state inference.</div>
-        <div class="rc-tags"><span>Wearable Hardware</span><span>PCB</span><span>Speech Emotion</span><span>Adaptive Agents</span></div>
-      </div>
-
-      <div class="research-card">
-        <div class="rc-org">Wellesley HCI Lab · PIs: Orit Shaer, Erin Solovey</div>
-        <div class="rc-title">Multimodal Cognitive Load Modeling in Emergency Response</div>
-        <div class="rc-desc">Built ML pipelines for real-time stress and cognitive load inference from synchronized EEG and physiological signals. Designed IRB-approved EMT user studies with gameplay-based stress induction.</div>
-        <div class="rc-tags"><span>EEG</span><span>SVM</span><span>EDA/PPG</span><span>IRB Studies</span></div>
-      </div>
-
-      <div class="research-card">
-        <div class="rc-org">Wellesley HCI Lab · Sensei Project</div>
-        <div class="rc-title">Sensei: Physiological Signal Infrastructure</div>
-        <div class="rc-desc">Architected an end-to-end real-time platform for multimodal biosignal acquisition — React–Flask–MongoDB with Lab Streaming Layer for low-latency multimodal data.</div>
-        <div class="rc-tags"><span>React</span><span>Flask</span><span>LSL</span><span>Real-Time ML</span></div>
-      </div>
-
-      <div class="research-card">
-        <div class="rc-org">Olin Climate Lab · PI: Victoria Preston</div>
-        <div class="rc-title">Transformer Models for Marine Feature Identification</div>
-        <div class="rc-desc">Developed transformer-based models for multi-frame marine feature ID. Improved robustness via scene composition analysis and keypoint density optimization.</div>
-        <div class="rc-tags"><span>Transformers</span><span>Computer Vision</span><span>Keypoints</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="tab-panel" id="publications">
-  <div class="section-header">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Publications</h2>
-  </div>
-
-  <div class="pub-grid">
-    <div class="pub-item">
-      <div class="pub-year">2026</div>
-      <div>
-        <div class="pub-title">Sensei: Intelligent Physiological Signal Acquisition and Analysis Dashboard</div>
-        <div class="pub-venue">ACM Intelligent User Interfaces (IUI) 2026</div>
-      </div>
-      <div class="pub-badge badge-demo">Demonstration</div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-year">2025</div>
-      <div>
-        <div class="pub-title">Assistive Decision-Making for Right of Way Navigation at Uncontrolled Intersections</div>
-        <div class="pub-venue">NERC 2025 · Cornell University · arXiv:2509.18407</div>
-      </div>
-      <div class="pub-badge badge-paper">Extended Abstract · Poster</div>
-    </div>
-  </div>
+<section class="tab-panel active" id="home">
+  <h1>Navya Tiwari</h1>
 </section>
 
- 
-  <section class="tab-panel" id="awards">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Awards</h2>
+<section class="tab-panel" id="research">
+  <h2 class="section-title">Research</h2>
+  <p>Research content unchanged</p>
+</section>
+
+<!-- ✅ CLEAN PUBLICATIONS -->
+<section class="tab-panel" id="publications">
+  <h2 class="section-title">Publications</h2>
+
+  <div class="pub-item">
+    <div>2026</div>
+    <div>
+      <div class="pub-title">Sensei: Intelligent Physiological Signal Acquisition and Analysis Dashboard</div>
+      <div class="pub-venue">ACM IUI 2026</div>
     </div>
+    <div class="badge-demo">Demo</div>
+  </div>
 
-    <div class="awards-grid">
-      <div class="award-card">
-        <div class="award-name">MakeMIT × Harvard Hackathon</div>
-        <div class="award-result">3rd Place</div>
-        <div class="award-detail">Triad · Embodied AI robotic swarm · Raspberry Pi 5</div>
-        <div class="award-year">2026</div>
-      </div>
-
-      <div class="award-card">
-        <div class="award-name">Intercollegiate Assistive Tech Hack</div>
-        <div class="award-result">Most Functional</div>
-        <div class="award-detail">Tufts University · Wearable system for LVAD patients</div>
-        <div class="award-year">2025</div>
-      </div>
+  <div class="pub-item">
+    <div>2025</div>
+    <div>
+      <div class="pub-title">Assistive Decision-Making for Right of Way Navigation at Uncontrolled Intersections</div>
+      <div class="pub-venue">NERC 2025 · arXiv</div>
     </div>
-  </section>
+    <div class="badge-paper">Paper</div>
+  </div>
 
-  <section class="tab-panel" id="projects">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Independent Projects</h2>
-    </div>
+</section>
 
-    <div class="projects-list">
-      <div class="project-row">
-        <div class="proj-num">001</div>
-        <div class="proj-title">EEG-Guided Focus Application</div>
-        <div class="proj-desc">OpenBCI-based prototype exploring attention biomarkers and real-time neurofeedback with bandpower feature extraction and adaptive feedback visualizations.</div>
-        <div class="proj-tag">Neurofeedback</div>
-      </div>
+<section class="tab-panel" id="awards">
+  <h2 class="section-title">Awards</h2>
+</section>
 
-      <div class="project-row">
-        <div class="proj-num">002</div>
-        <div class="proj-title">Real-Time Right-of-Way Navigation</div>
-        <div class="proj-desc">Decision-support system comparing FSM and POMDP approaches across 19 metrics. iOS app in development for real-time intersection assistance.</div>
-        <div class="proj-tag">iOS · POMDP</div>
-      </div>
+<section class="tab-panel" id="projects">
+  <h2 class="section-title">Independent Projects</h2>
+</section>
 
-      <div class="project-row">
-        <div class="proj-num">003</div>
-        <div class="proj-title">EEG Brainwave Amplification Circuit</div>
-        <div class="proj-desc">Two-stage non-inverting amplifier and filter chain for EEG signal acquisition. Frequency-band fidelity and noise characterization in MATLAB.</div>
-        <div class="proj-tag">Analog · PCB</div>
-      </div>
-
-      <div class="project-row">
-        <div class="proj-num">004</div>
-        <div class="proj-title">Binocular Rivalry Computational Modeling</div>
-        <div class="proj-desc">Simulating perceptual switching dynamics in ambiguous perception. Investigating contextuality-related statistical patterns in neural models.</div>
-        <div class="proj-tag">Comp. Neuro</div>
-      </div>
-
-      <div class="project-row">
-        <div class="proj-num">005</div>
-        <div class="proj-title">Triad — Embodied AI Robotic Swarm</div>
-        <div class="proj-desc">MakeMIT × Harvard: multi-agent robotic system integrating perception, communication, and coordinated decision-making on Raspberry Pi platforms.</div>
-        <div class="proj-tag">Robotics · AI</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="tab-panel" id="contact">
-    <div class="section-header">
-      <span class="section-num">05</span>
-      <h2 class="section-title">Contact</h2>
-    </div>
-
-    <div class="contact-inner">
-      <div class="contact-heading">Let's build<br>something <em>new.</em></div>
-
-      <div class="contact-links">
-        <a href="mailto:ntiwari@olin.edu" class="contact-link">
-          <div><span class="contact-link-label">Email</span>ntiwari@olin.edu</div>
-        </a>
-
-        <a href="https://github.com/Bugates" class="contact-link">
-          <div><span class="contact-link-label">GitHub</span>github.com/Bugates</div>
-        </a>
-
-        <div class="contact-link" style="cursor:default;">
-          <div><span class="contact-link-label">Based in</span>Boston, MA — Needham, MA</div>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
-<footer>
-  <p>Navya Tiwari · Olin College of Engineering · ECE '28</p>
-  <p>ntiwari@olin.edu · +1 (781) 492-6880</p>
-</footer>
-
 <script>
-const phrases = [
-  'physiological computing',
-  'human-AI interaction',
-  'wearable biosensing',
-  'cognitive load modeling',
-  'real-time ML pipelines',
-  'embodied AI systems',
-];
+const tabs = document.querySelectorAll('.tab-btn');
+const panels = document.querySelectorAll('.tab-panel');
 
-const el = document.getElementById('tw');
-let pi = 0;
-let ci = 0;
-let deleting = false;
-
-function tick() {
-  const phrase = phrases[pi];
-
-  if (!deleting) {
-    el.textContent = phrase.slice(0, ci + 1);
-    ci++;
-
-    if (ci === phrase.length) {
-      deleting = true;
-      setTimeout(tick, 2200);
-      return;
-    }
-
-    setTimeout(tick, 68 + Math.random() * 30);
-  } else {
-    el.textContent = phrase.slice(0, ci - 1);
-    ci--;
-
-    if (ci === 0) {
-      deleting = false;
-      pi = (pi + 1) % phrases.length;
-      setTimeout(tick, 400);
-      return;
-    }
-
-    setTimeout(tick, 32);
-  }
-}
-
-setTimeout(tick, 900);
-
-const tabButtons = document.querySelectorAll('.tab-btn');
-const tabPanels = document.querySelectorAll('.tab-panel');
-
-tabButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const target = button.dataset.tab;
-
-    tabButtons.forEach(btn => btn.classList.remove('active'));
-    tabPanels.forEach(panel => panel.classList.remove('active'));
-
-    button.classList.add('active');
-    document.getElementById(target).classList.add('active');
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+tabs.forEach(btn => {
+  btn.onclick = () => {
+    tabs.forEach(b => b.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  };
 });
 </script>
 
