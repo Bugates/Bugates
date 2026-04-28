@@ -331,6 +331,29 @@
     margin-bottom: 6px;
   }
 
+  .pub-title a {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .pub-title a::after {
+    content: " ↗";
+    font-family: var(--mono);
+    font-size: 12px;
+    opacity: 0.6;
+    margin-left: 4px;
+    transition: opacity 0.2s;
+  }
+
+  .pub-title a:hover {
+    color: var(--accent);
+  }
+
+  .pub-title a:hover::after {
+    opacity: 1;
+  }
+
   .pub-venue {
     font-family: var(--mono);
     font-size: 10px;
@@ -702,7 +725,11 @@
       <div class="pub-item">
         <div class="pub-year">2026</div>
         <div>
-          <div class="pub-title">Sensei: Intelligent Physiological Signal Acquisition and Analysis Dashboard</div>
+          <div class="pub-title">
+            <a href="https://doi.org/10.1145/3742414.3794773" target="_blank" rel="noopener noreferrer">
+              Sensei: Intelligent Physiological Signal Acquisition and Analysis Dashboard
+            </a>
+          </div>
           <div class="pub-venue">ACM Intelligent User Interfaces (IUI) 2026</div>
         </div>
         <div class="pub-badge badge-demo">Demo Accepted</div>
@@ -711,7 +738,11 @@
       <div class="pub-item">
         <div class="pub-year">2025</div>
         <div>
-          <div class="pub-title">Assistive Decision-Making for Right of Way Navigation at Uncontrolled Intersections</div>
+          <div class="pub-title">
+            <a href="https://doi.org/10.48550/arXiv.2509.18407" target="_blank" rel="noopener noreferrer">
+              Assistive Decision-Making for Right of Way Navigation at Uncontrolled Intersections
+            </a>
+          </div>
           <div class="pub-venue">NERC 2025 · Cornell University · arXiv:2509.18407</div>
         </div>
         <div class="pub-badge badge-paper">Paper</div>
