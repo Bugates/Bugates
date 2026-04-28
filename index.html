@@ -187,11 +187,6 @@
     color: rgba(245,242,236,0.65);
   }
 
-  .tabs-shell {
-    min-height: 100vh;
-    padding-top: 80px;
-  }
-
   .tab-panel {
     display: none;
     padding: 6rem 3rem;
@@ -221,70 +216,6 @@
     font-family: var(--serif);
     font-size: 42px;
     font-weight: 400;
-  }
-
-  .pub-grid {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .pub-item {
-    display: grid;
-    grid-template-columns: 80px 1fr auto;
-    align-items: start;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--rule);
-    transition: background 0.15s;
-  }
-
-  .pub-item:hover {
-    background: var(--paper2);
-    margin: 0 -3rem;
-    padding: 2rem 3rem;
-  }
-
-  .pub-year {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    padding-top: 4px;
-  }
-
-  .pub-title {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.3;
-    margin-bottom: 6px;
-  }
-
-  .pub-venue {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    text-transform: uppercase;
-  }
-
-  .pub-badge {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    white-space: nowrap;
-    margin-top: 4px;
-  }
-
-  .badge-demo {
-    background: var(--accent2);
-    color: white;
-  }
-
-  .badge-paper {
-    background: var(--ink);
-    color: var(--paper);
   }
 
   .research-grid {
@@ -364,56 +295,68 @@
     transition: all 0.15s;
   }
 
-  .projects-list {
+  .pub-grid {
     display: flex;
     flex-direction: column;
   }
 
-  .project-row {
+  .pub-item {
     display: grid;
-    grid-template-columns: 40px 1fr 1fr 120px;
-    align-items: center;
+    grid-template-columns: 80px 1fr auto;
+    align-items: start;
     gap: 2rem;
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     border-bottom: 1px solid var(--rule);
     transition: background 0.15s;
-    cursor: default;
   }
 
-  .project-row:hover {
+  .pub-item:hover {
     background: var(--paper2);
     margin: 0 -3rem;
-    padding: 1.5rem 3rem;
+    padding: 2rem 3rem;
   }
 
-  .proj-num {
+  .pub-year {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    padding-top: 4px;
+  }
+
+  .pub-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .pub-venue {
     font-family: var(--mono);
     font-size: 10px;
-    color: var(--muted);
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
   }
 
-  .proj-title {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 400;
-  }
-
-  .proj-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .proj-tag {
+  .pub-badge {
     font-family: var(--mono);
     font-size: 9px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    padding: 5px 12px;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  .badge-demo {
+    background: var(--accent2);
+    color: white;
+  }
+
+  .badge-paper {
     background: var(--ink);
     color: var(--paper);
-    padding: 5px 12px;
-    text-align: center;
-    justify-self: end;
   }
 
   .awards-grid {
@@ -476,30 +419,56 @@
     margin-top: 1.2rem;
   }
 
-  .skills-row {
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
+    grid-template-columns: 40px 1fr 1fr 120px;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.15s;
+    cursor: default;
   }
 
-  .skill-block {
+  .project-row:hover {
     background: var(--paper2);
-    padding: 2rem;
+    margin: 0 -3rem;
+    padding: 1.5rem 3rem;
   }
 
-  .skill-cat {
+  .proj-num {
     font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
+    font-size: 10px;
+    color: var(--muted);
   }
 
-  .skill-list {
+  .proj-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .proj-desc {
     font-size: 13px;
     color: var(--muted);
-    line-height: 2.2;
+    line-height: 1.6;
+  }
+
+  .proj-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 5px 12px;
+    text-align: center;
+    justify-self: end;
   }
 
   .contact-inner {
@@ -614,7 +583,6 @@
 
     .research-grid,
     .awards-grid,
-    .skills-row,
     .contact-inner {
       grid-template-columns: 1fr;
     }
@@ -645,10 +613,9 @@
   <span class="nav-logo">Navya Tiwari — Portfolio</span>
   <div class="nav-links">
     <button class="tab-btn active" data-tab="home">Home</button>
-    <button class="tab-btn" data-tab="publications">Publications</button>
-    <button class="tab-btn" data-tab="posters">Posters</button>
-    <button class="tab-btn" data-tab="awards">Awards</button>
     <button class="tab-btn" data-tab="research">Research</button>
+    <button class="tab-btn" data-tab="publications">Publications</button>
+    <button class="tab-btn" data-tab="awards">Awards</button>
     <button class="tab-btn" data-tab="projects">Independent Projects</button>
     <button class="tab-btn" data-tab="contact">Contact</button>
   </div>
@@ -688,9 +655,46 @@
     </div>
   </div>
 
-  <section class="tab-panel" id="publications">
+  <section class="tab-panel" id="research">
     <div class="section-header">
       <span class="section-num">01</span>
+      <h2 class="section-title">Research Experience</h2>
+    </div>
+
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="rc-org">MIT Media Lab · Fluid Interfaces Group · PI: Michelle Kim</div>
+        <div class="rc-title">Wearable Physiological Sensing & Conversational Agents</div>
+        <div class="rc-desc">Designed smart ring components for biosignal acquisition, soldered PCB prototypes, built embedded streaming software, and developed multimodal speech-based pipelines for emotion and cognitive-state inference.</div>
+        <div class="rc-tags"><span>Wearable Hardware</span><span>PCB</span><span>Speech Emotion</span><span>Adaptive Agents</span></div>
+      </div>
+
+      <div class="research-card">
+        <div class="rc-org">Wellesley HCI Lab · PIs: Orit Shaer, Erin Solovey</div>
+        <div class="rc-title">Multimodal Cognitive Load Modeling in Emergency Response</div>
+        <div class="rc-desc">Built ML pipelines for real-time stress and cognitive load inference from synchronized EEG and physiological signals. Designed IRB-approved EMT user studies with gameplay-based stress induction.</div>
+        <div class="rc-tags"><span>EEG</span><span>SVM</span><span>EDA/PPG</span><span>IRB Studies</span></div>
+      </div>
+
+      <div class="research-card">
+        <div class="rc-org">Wellesley HCI Lab · Sensei Project</div>
+        <div class="rc-title">Sensei: Physiological Signal Infrastructure</div>
+        <div class="rc-desc">Architected an end-to-end real-time platform for multimodal biosignal acquisition — React–Flask–MongoDB with Lab Streaming Layer for low-latency multimodal data.</div>
+        <div class="rc-tags"><span>React</span><span>Flask</span><span>LSL</span><span>Real-Time ML</span></div>
+      </div>
+
+      <div class="research-card">
+        <div class="rc-org">Olin Climate Lab · PI: Victoria Preston</div>
+        <div class="rc-title">Transformer Models for Marine Feature Identification</div>
+        <div class="rc-desc">Developed transformer-based models for multi-frame marine feature ID. Improved robustness via scene composition analysis and keypoint density optimization.</div>
+        <div class="rc-tags"><span>Transformers</span><span>Computer Vision</span><span>Keypoints</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tab-panel" id="publications">
+    <div class="section-header">
+      <span class="section-num">02</span>
       <h2 class="section-title">Publications</h2>
     </div>
 
@@ -705,30 +709,21 @@
       </div>
 
       <div class="pub-item">
+        <div class="pub-year">2026</div>
+        <div>
+          <div class="pub-title">A Physiological State Interface for Rapid Prototyping of Interactive Systems</div>
+          <div class="pub-venue">UIST 2026 Poster · In Preparation</div>
+        </div>
+        <div class="pub-badge badge-paper">Poster</div>
+      </div>
+
+      <div class="pub-item">
         <div class="pub-year">2025</div>
         <div>
           <div class="pub-title">Assistive Decision-Making for Right of Way Navigation at Uncontrolled Intersections</div>
           <div class="pub-venue">NERC 2025 · Cornell University · arXiv:2509.18407</div>
         </div>
         <div class="pub-badge badge-paper">Paper</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="tab-panel" id="posters">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2 class="section-title">Posters</h2>
-    </div>
-
-    <div class="pub-grid">
-      <div class="pub-item">
-        <div class="pub-year">2026</div>
-        <div>
-          <div class="pub-title">A Physiological State Interface for Rapid Prototyping of Interactive Systems</div>
-          <div class="pub-venue">UIST 2026 Poster · In Preparation</div>
-        </div>
-        <div class="pub-badge badge-demo">Poster</div>
       </div>
 
       <div class="pub-item">
@@ -765,46 +760,9 @@
     </div>
   </section>
 
-  <section class="tab-panel" id="research">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Research Experience</h2>
-    </div>
-
-    <div class="research-grid">
-      <div class="research-card">
-        <div class="rc-org">MIT Media Lab · Fluid Interfaces Group · PI: Michelle Kim</div>
-        <div class="rc-title">Wearable Physiological Sensing & Conversational Agents</div>
-        <div class="rc-desc">Designed smart ring components for biosignal acquisition, soldered PCB prototypes, built embedded streaming software, and developed multimodal speech-based pipelines for emotion and cognitive-state inference.</div>
-        <div class="rc-tags"><span>Wearable Hardware</span><span>PCB</span><span>Speech Emotion</span><span>Adaptive Agents</span></div>
-      </div>
-
-      <div class="research-card">
-        <div class="rc-org">Wellesley HCI Lab · PIs: Orit Shaer, Erin Solovey</div>
-        <div class="rc-title">Multimodal Cognitive Load Modeling in Emergency Response</div>
-        <div class="rc-desc">Built ML pipelines for real-time stress and cognitive load inference from synchronized EEG and physiological signals. Designed IRB-approved EMT user studies with gameplay-based stress induction.</div>
-        <div class="rc-tags"><span>EEG</span><span>SVM</span><span>EDA/PPG</span><span>IRB Studies</span></div>
-      </div>
-
-      <div class="research-card">
-        <div class="rc-org">Wellesley HCI Lab · Sensei Project</div>
-        <div class="rc-title">Sensei: Physiological Signal Infrastructure</div>
-        <div class="rc-desc">Architected an end-to-end real-time platform for multimodal biosignal acquisition — React–Flask–MongoDB with Lab Streaming Layer for low-latency multimodal data.</div>
-        <div class="rc-tags"><span>React</span><span>Flask</span><span>LSL</span><span>Real-Time ML</span></div>
-      </div>
-
-      <div class="research-card">
-        <div class="rc-org">Olin Climate Lab · PI: Victoria Preston</div>
-        <div class="rc-title">Transformer Models for Marine Feature Identification</div>
-        <div class="rc-desc">Developed transformer-based models for multi-frame marine feature ID. Improved robustness via scene composition analysis and keypoint density optimization.</div>
-        <div class="rc-tags"><span>Transformers</span><span>Computer Vision</span><span>Keypoints</span></div>
-      </div>
-    </div>
-  </section>
-
   <section class="tab-panel" id="projects">
     <div class="section-header">
-      <span class="section-num">05</span>
+      <span class="section-num">04</span>
       <h2 class="section-title">Independent Projects</h2>
     </div>
 
@@ -848,7 +806,7 @@
 
   <section class="tab-panel" id="contact">
     <div class="section-header">
-      <span class="section-num">06</span>
+      <span class="section-num">05</span>
       <h2 class="section-title">Contact</h2>
     </div>
 
