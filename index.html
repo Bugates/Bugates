@@ -286,6 +286,7 @@ nav {
   text-align: center;
 }
 
+/* modal */
 .modal {
   position: fixed;
   inset: 0;
@@ -303,7 +304,7 @@ nav {
 
 .modal-content {
   background: var(--paper);
-  width: 780px;
+  width: 760px;
   max-width: 100%;
   max-height: 90vh;
   overflow-y: auto;
@@ -311,12 +312,28 @@ nav {
   padding: 2.5rem;
 }
 
+.modal-image-wrap {
+  width: 100%;
+  height: 280px;
+  background: var(--paper2);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .modal-title {
   font-family: var(--serif);
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 400;
-  line-height: 1.15;
-  margin-bottom: 0.8rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
 .modal-subtitle {
@@ -325,27 +342,20 @@ nav {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.5rem;
 }
 
-.modal-section {
-  margin-top: 1.5rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--rule);
-}
-
-.modal-section h3 {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.45rem;
-}
-
-.modal-section p {
+.modal-text {
   font-size: 14px;
   color: var(--muted);
+  line-height: 1.8;
+}
+
+.modal-list {
+  margin-top: 1.5rem;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -388,6 +398,10 @@ nav {
 
   .modal-content {
     padding: 1.5rem;
+  }
+
+  .modal-image-wrap {
+    height: 210px;
   }
 }
 </style>
@@ -541,9 +555,13 @@ nav {
 
 <div class="modal" id="research-modal" onclick="closeModalOnBackdrop(event)">
   <div class="modal-content">
+    <div class="modal-image-wrap">
+      <img id="modal-image" class="modal-image" src="" alt="">
+    </div>
     <div class="modal-title" id="modal-title"></div>
     <div class="modal-subtitle" id="modal-subtitle"></div>
-    <div id="modal-text"></div>
+    <div class="modal-text" id="modal-text"></div>
+    <ul class="modal-list" id="modal-list"></ul>
     <div class="modal-close" onclick="closeModal()">Close</div>
   </div>
 </div>
@@ -565,42 +583,51 @@ tabs.forEach(btn => {
 const modalData = {
   mit: {
     title: "MIT Media Lab — Fluid Interfaces",
-    subtitle: "Wearable physiological sensing and adaptive conversational agents",
-    question: "How can wearable physiological signals help conversational agents respond to a person’s cognitive and affective state?",
-    built: "I worked on smart ring sensing hardware, embedded streaming workflows, and multimodal pipelines combining speech and physiological data.",
-    skills: ["Wearable sensing", "PCB prototyping", "Embedded systems", "Signal streaming", "Speech emotion analysis", "Human-AI interaction"],
-    methods: ["Hardware prototyping", "Sensor integration", "Real-time physiological data streaming", "Multimodal feature extraction"],
-    outcome: "This work helped me understand how physiological sensing can move beyond measurement and become part of adaptive, user-aware interfaces."
+    subtitle: "Wearable sensing · smart ring hardware · adaptive agents",
+    image: "images/mit-media-lab.jpg",
+    alt: "Wearable physiological sensing prototype",
+    text: "Worked on wearable physiological sensing systems at the intersection of biosignal acquisition, embedded hardware, and adaptive conversational agents. The work involved building and testing prototype sensing components and exploring how physiological data can support more responsive human-AI interaction.",
+    bullets: [
+      "Designed and soldered smart ring hardware components for biosignal acquisition.",
+      "Built embedded streaming software for physiological sensing prototypes.",
+      "Developed multimodal speech-based pipelines for emotion and cognitive-state inference."
+    ]
   },
-
   wellesley: {
     title: "Wellesley HCI Lab — Cognitive Load Modeling",
-    subtitle: "Multimodal sensing in emergency response",
-    question: "How can physiological signals help estimate cognitive load and stress during high-pressure emergency-response tasks?",
-    built: "I developed machine learning pipelines using EEG, EDA, and pupillometry signals, and supported IRB-approved EMT study design.",
-    skills: ["EEG", "EDA", "Pupillometry", "Machine learning", "SVM classification", "IRB study design"],
-    methods: ["Gameplay-based stress induction", "Signal synchronization", "Feature engineering", "Cognitive load modeling"],
-    outcome: "The project connected physiological computing with real-world decision-making contexts, especially how responders experience stress and load."
+    subtitle: "EEG · EDA · pupillometry · emergency response",
+    image: "images/wellesley-hci.jpg",
+    alt: "Multimodal cognitive load sensing setup",
+    text: "Built systems for modeling cognitive load and stress from synchronized physiological signals in emergency-response contexts. The project connected signal processing, machine learning, and user study design to understand how responders experience high-load tasks.",
+    bullets: [
+      "Developed ML pipelines for cognitive load inference from EEG and physiological data.",
+      "Worked with synchronized EEG, EDA, and pupillometry signals.",
+      "Supported IRB-approved EMT study design and gameplay-based stress induction."
+    ]
   },
-
   sensei: {
     title: "Sensei — Physiological Signal Infrastructure",
-    subtitle: "Signal → State → Action toolkit for physiological interaction design",
-    question: "How can novice designers prototype interactive systems using physiological signals without needing signal-processing expertise?",
-    built: "I designed a real-time platform that maps biosignals into interpretable states and connects those states to physical outputs such as lamps, motors, and tangible interfaces.",
-    skills: ["React", "Flask", "Lab Streaming Layer", "Arduino", "BITalino", "EDA/PPG", "Interaction design", "Real-time systems"],
-    methods: ["Physiological signal streaming", "State-based abstraction", "Embodied prototyping", "Classroom deployment", "Design-study analysis"],
-    outcome: "Sensei reframes biosignals as design material, helping users move from raw signal observation to state-based interaction design."
+    subtitle: "React · Flask · LSL · real-time biosignal interaction",
+    image: "images/sensei-dashboard.jpg",
+    alt: "Sensei physiological computing dashboard",
+    text: "Designed Sensei, a real-time physiological computing platform that helps novice designers move from raw biosignals to interpretable states and physical actions. The system supports biosignal visualization, state mapping, and embodied outputs such as an ambient lamp and motorized flower.",
+    bullets: [
+      "Architected a React, Flask, and Lab Streaming Layer pipeline for low-latency biosignal streaming.",
+      "Designed state-based abstractions for mapping signals to behaviors.",
+      "Integrated physiological sensing with physical outputs including lamps, servo motion, and custom hardware."
+    ]
   },
-
   olin: {
     title: "Olin Climate Lab — Marine Feature Identification",
-    subtitle: "Transformer models for environmental perception",
-    question: "How can transformer-based models identify marine features more robustly across changing visual scenes?",
-    built: "I worked on computer vision pipelines for multi-frame marine feature identification using temporal and spatial context.",
-    skills: ["Transformers", "Computer vision", "Python", "Model evaluation", "Feature analysis", "Environmental robotics"],
-    methods: ["Multi-frame analysis", "Scene composition analysis", "Keypoint density evaluation", "Robustness testing"],
-    outcome: "The work improved my ability to connect machine learning methods with real-world sensing problems in environmental systems."
+    subtitle: "Transformers · computer vision · marine systems",
+    image: "images/olin-climate-lab.jpg",
+    alt: "Marine feature identification model visualization",
+    text: "Developed transformer-based models for identifying marine features across image and video data. The project focused on improving robustness by using temporal context, visual feature density, and scene composition across frames.",
+    bullets: [
+      "Built transformer-based models for multi-frame marine feature identification.",
+      "Analyzed visual feature density and scene composition to improve model robustness.",
+      "Worked on computer vision pipelines for environmental and marine robotics applications."
+    ]
   }
 };
 
@@ -609,33 +636,19 @@ function openModal(type) {
 
   document.getElementById("modal-title").innerText = data.title;
   document.getElementById("modal-subtitle").innerText = data.subtitle;
+  document.getElementById("modal-text").innerText = data.text;
 
-  document.getElementById("modal-text").innerHTML = `
-    <div class="modal-section">
-      <h3>Research Question</h3>
-      <p>${data.question}</p>
-    </div>
+  const image = document.getElementById("modal-image");
+  image.src = data.image;
+  image.alt = data.alt;
 
-    <div class="modal-section">
-      <h3>What I Built / Worked On</h3>
-      <p>${data.built}</p>
-    </div>
-
-    <div class="modal-section">
-      <h3>Methods</h3>
-      <p>${data.methods.join(" · ")}</p>
-    </div>
-
-    <div class="modal-section">
-      <h3>Skills</h3>
-      <p>${data.skills.join(" · ")}</p>
-    </div>
-
-    <div class="modal-section">
-      <h3>Outcome</h3>
-      <p>${data.outcome}</p>
-    </div>
-  `;
+  const list = document.getElementById("modal-list");
+  list.innerHTML = "";
+  data.bullets.forEach(item => {
+    const li = document.createElement("li");
+    li.innerText = item;
+    list.appendChild(li);
+  });
 
   document.getElementById("research-modal").classList.add("active");
 }
